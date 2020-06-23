@@ -40,10 +40,10 @@ def main():
 
     # Dictionary comprehension of form {key:value for [name, cases, bottled] in csvfile}
     # Creates drink objects for each line in csv file
-    drinks = {line[0]:Drink(line[0], line[1], line[2]) for line in csv_reader}
+    drinks = {line[0]:Drink(line[0], int(line[1]), line[2]) for line in csv_reader}
 
     for drink in drinks.values():
-        print(f'{drink.name} : {drink.cases}')
+        print(f'{drink.name:>4} : {drink.cases} = {drink.totalDrinkWaste}')
 
 if __name__ == '__main__':
     main()
