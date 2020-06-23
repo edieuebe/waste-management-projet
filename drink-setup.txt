@@ -1,0 +1,9 @@
+Margarita,100,bottle
+Mai Tai,300,can
+Gin Tonic,500,can
+Mojito,100,can
+Paloma,150,bottle
+Rum Cola,325,bottle
+Rum Ginger,700,can
+Tequila Soda,830,can
+Vodka Mule,475,bottle
