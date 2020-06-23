@@ -5,7 +5,7 @@ class Bottles():
         self.isInProduction= True
         self.num_bottles = cases*6 #6 bottles per case
 
-    def bottles(self, cases):
+    def bottles(self, cases, num_bottles):
         # each pallet of empty bottles contains 1,144 bottles
         # there are 8 rows, 143 bottles per row
         # for each row, there is a large four sided, no lid, cardboard box with a divider inside seperating each bottle from each other
@@ -26,7 +26,7 @@ class Bottles():
 
         return V_bottle_waste
 
-    def Cartons():
+    def Cartons(self, cases):
         # in each carton, there are 6 bottles
         # inside each carton, there is a CB divider that seperates the bottles
         # the dividers come in a large CB box: 200 dividers per box 
@@ -50,7 +50,7 @@ class Bottles():
 
         return V_carton_waste
 
-    def Corks():
+    def Corks(self, cases):
         # there are 1800 corks per box 
 
         #initialize volumes 
