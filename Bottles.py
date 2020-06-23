@@ -1,7 +1,11 @@
 class Bottles():
     def __init__(self, cases):
-        self.cases          = cases #Number of cases to be produced
-        self.num_bottles    = cases*6 #6 bottles per case
+        self.cases       = cases #Number of cases to be produced
+        self.num_bottles = cases*6 #6 bottles per case
+        self.totalWaste  = self.totalBottleWaste()
+
+    def totalBottleWaste(self):
+        return self.bottles() + self.Cartons() + self.Corks()
 
     def bottles(self):
         # each pallet of empty bottles contains 1,144 bottles

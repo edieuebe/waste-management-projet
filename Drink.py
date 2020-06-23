@@ -11,6 +11,13 @@ class Drink():
         else:
             self.packaging_waste = Can(cases)
 
+        self.totalDrinkWaste = self.drinkWaste()
+
+    def drinkWaste(self):
+        packagingWaste  = self.packaging_waste.totalWaste
+        ingredientWaste = self.Sugar_Citric_NaBenz_Bags()
+        return packagingWaste + ingredientWaste
+
     def sugar_citric_calc(self, gallons, constant):
         return round((gallons*constant)/50 )
 
@@ -23,7 +30,7 @@ class Drink():
         #initialize volume 
         V_sugar      = 0.0029502 #m^3
         V_citric     = 0.0029502 #m^3
-        V_sodiumbenz = '' #need to find this value 
+        V_sodiumbenz = 0.0029502 # STILL need to find this value (placeholder right now)
         V_quinine    = 0
         V_phosphoric = 0
 

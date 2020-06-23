@@ -2,6 +2,10 @@ class Can():
     def __init__(self, cases):
         self.cases          = cases #number of cases being produced
         self.num_cans       = cases*4*6 # 6 cartons per case, 4 cans per carton
+        self.totalWaste  = self.totalCanWaste()
+    
+    def totalCanWaste(self):
+        return self.Lids() + self.Cartons() + self.Trays() + self.Cans() + self.Plastic_Rolls()
 
     def Lids(self):
         # each pallet contains 351,654 lids
