@@ -77,7 +77,7 @@ class Can():
 
         return V_tray_waste
 
-    def Cans (self, cases):
+    def Cans (self, cases, num_cans):
 
         #initialize volumes 
         V_can = 4.8657e-4 #m^3
@@ -102,13 +102,15 @@ class Can():
 
         return V_plasticroll_waste
 
-    def Sugar_Citric_NaBenz_Bags(self):
+    def Sugar_Citric_NaBenz_Bags(self, name, cases):
         #from the expected case quantity, we can determine the total gallons of product being produced
 
         #initialize volume 
         V_sugar = 0.0029502 #m^3
         V_citric = 0.0029502 #m^3
         V_sodiumbenz = '' #need to find this value 
+        V_quinine = 0
+        V_phosphoric = 0
 
         #determine quantities 
         gallons = cases*2.25
@@ -182,7 +184,9 @@ class Can():
             quinine = 0
             phosphoric_acid = 0
 
-        kettle_waste= ()
+        kettle_waste= (sugar*V_sugar)+(citric*V_citric)+(sodium_benzoate*V_sodiumbenz)+(quinine*V_quinine)+(phosphoric_acid*V_phosphoric)
+
+        return kettle_waste
     
 
 
