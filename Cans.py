@@ -5,7 +5,7 @@ class Can():
         self.isInProduction = True
         self.num_cans = cases*4*6 # 6 cartons per case, 4 cans per carton
 
-    def Lids(self, cases):
+    def Lids(self, cases, num_cans):
         # each pallet contains 351,654 lids
         # every pallet has three large, thick cardboard sheets holding it in place
         # each row on pallet contains 22 slips (each with 552 lids inside) wrapped in a thin cardboard sheet
