@@ -102,6 +102,87 @@ class Can():
 
         return V_plasticroll_waste
 
+    def Sugar_Citric_NaBenz_Bags(self):
+        #from the expected case quantity, we can determine the total gallons of product being produced
+
+        #initialize volume 
+        V_sugar = 0.0029502 #m^3
+        V_citric = 0.0029502 #m^3
+        V_sodiumbenz = '' #need to find this value 
+
+        #determine quantities 
+        gallons = cases*2.25
+        if name == 'Margarita' :
+            sugar = round((gallons*0.63493132)/50 )#50lb bags
+            citric =round((gallons*0.04703195)/50) #50lb bags
+            sodium_benzoate = round((gallons*0.00383192)/55) #55lb bags
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name == 'Mai Tai':
+            sugar=round((gallons*0.56533333)/50)
+            citric = round((gallons*0.0235111)/50)
+            sodium_benzoate=round((gallons*0.0013713333333333)/55)
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name == 'Gin Tonic':
+            sugar=round((gallons*0.638582716049382)/50)
+            citric = round((gallons*0.0269177777777778)/50)
+            sodium_benzoate=round((gallons*0.0014318)/55)
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name == 'Mojito':
+            sugar=round((gallons*0.2822444)/50)
+            citric = round((gallons*0.02)/50)
+            sodium_benzoate=round((gallons*0.00282192)/50)
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name == 'Paloma':
+            sugar=round((gallons*0.423287543)/50)
+            citric=round((gallons*0.01316895)/50)
+            sodium_benzoate=round((gallons*0.00282192)/55)
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name=='Rum Cola':
+            sugar=round((gallons*0.65844729)/50)
+            citric=round((gallons*0.0006608)/50)
+            sodium_benzoate=round((gallons*0.001475)/55)
+            quinine = 0
+            phosphoric_acid = 0 #find out size of this bag , there is a quantity here
+
+        elif name=='Rum Ginger':
+            sugar=round((gallons*0.541676543209876)/50)
+            citric=round((gallons*0.010285012345679)/50)
+            sodium_benzoate=round((gallons*0.013713333333333)/55)
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name=='Tequila Soda':
+            sugar=0
+            citric=0
+            sodium_benzoate=0
+            quinine = 0
+            phosphoric_acid = 0
+
+        elif name=='Vodka Mule':
+            sugar=round((gallons*0.541676543209876)/50)
+            citric=round((gallons*0.010285012345679)/50)
+            sodium_benzoate=round((gallons*0.0013713333333333)/55)
+            quinine = 0
+            phosphoric_acid = 0
+
+        else:
+            sugar=0
+            citric=0
+            sodium_benzoate=0
+            quinine = 0
+            phosphoric_acid = 0
+
+        kettle_waste= ()
     
 
 
