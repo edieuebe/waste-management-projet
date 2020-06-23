@@ -1,5 +1,5 @@
 class Bottles():
-    def __int__(self, name, cases):
+    def __init__(self, name, cases):
         self.name=name #should be specific to drink
         self.cases=cases #Number of cases to be produced
         self.isInProduction= True
