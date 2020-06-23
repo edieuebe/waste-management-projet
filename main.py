@@ -3,7 +3,6 @@
 from Drink import Drink
 import csv
 import os
-import argparse
 import sys
 
 def usage(exit_code = 0):
