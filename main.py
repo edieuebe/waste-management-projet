@@ -22,6 +22,7 @@ def main():
     path = 'drink-setup.txt'
     specificDrink = 'None'
 
+    # Loop through arguments to parse
     while len(arguments) and arguments[0].startswith('-'):
         arg = arguments.pop(0)
         if arg == '-i':
