@@ -58,7 +58,7 @@ class Bottles():
 
         # initialize quantities
         num_box       = (cases*6)/200 
-        trashed_corks = (Cases*6)*0.01 # assume 99% efficiency 
+        trashed_corks = (cases*6)*0.01 # assume 99% efficiency 
 
         # determine waste volume from cork pacakging 
         V_cork_waste = (num_box*V_box)+(trashed_corks*V_cork)
