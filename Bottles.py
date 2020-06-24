@@ -1,7 +1,8 @@
 class Bottles():
-    def __init__(self, cases):
+    def __init__(self, cases,efficiency):
         self.cases       = cases #Number of cases to be produced
         self.num_bottles = cases*6 #6 bottles per case
+        self.efficiency  = ((100-efficiency)/100)
         self.totalWaste  = self.totalBottleWaste()
 
     def totalBottleWaste(self):
@@ -19,9 +20,9 @@ class Bottles():
         V_slipsheet      = 0.003934 #m^3
 
         #initialize quantities 
-        num_pallets     = self.num_bottles/1144 #number of pallets used=number of slipsheets thrown away 
-        num_rows        = self.num_bottles/143  #if there are 143 bottles per row, dividing the total num of bottles by 143 should give num of rows
-        trashed_bottles = self.num_bottles*0.02
+        num_pallets     = round(self.num_bottles/1144) #number of pallets used=number of slipsheets thrown away 
+        num_rows        = round(self.num_bottles/143)  #if there are 143 bottles per row, dividing the total num of bottles by 143 should give num of rows
+        trashed_bottles = self.num_bottles*self.efficiency
 
         #determine waste volume from bottle packaging
         V_bottle_waste = (num_pallets*V_slipsheet)+(V_bottle*trashed_bottles)+(num_rows*V_box_divider_CB)
@@ -42,10 +43,10 @@ class Bottles():
         # assume the dividers themselves do not become waste since they are hand-installed, the waste is minimal
 
         # initialize quantities
-        num_bundles     = self.cases/22 
-        num_pallets     = self.cases/528  #total of 528 cartons per pallet if 24 bundles *22 = 528
-        num_divider_box = self.cases/200 
-        trashed_cartons = self.cases*0.01 #assume 99% efficiency
+        #num_bundles     = self.cases/22 
+        num_pallets     = round(self.cases/528 ) #total of 528 cartons per pallet if 24 bundles *22 = 528
+        num_divider_box = round(self.cases/200 )
+        trashed_cartons = self.cases*self.efficiency #assume 99% efficiency
 
         #determine waste volume from carton packaging and waste
         V_carton_waste = (num_pallets*V_slipsheet)+(num_divider_box*V_dividerbox)+(trashed_cartons*V_carton)
@@ -60,11 +61,13 @@ class Bottles():
         V_cork = 9.7752e-5 #m^3
 
         # initialize quantities
-        num_box       = (self.cases*6)/200 
-        trashed_corks = (self.cases*6)*0.01 # assume 99% efficiency 
+        num_box       = (self.num_bottles)/1800
+        trashed_corks = (self.num_bottles)*self.efficiency # assume 99% efficiency 
 
         # determine waste volume from cork pacakging 
         V_cork_waste = (num_box*V_box)+(trashed_corks*V_cork)
 
         return V_cork_waste
+   
+
    
