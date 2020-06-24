@@ -1,1 +1,8 @@
-Margarita,9000,can
+Three Sheets Rum, 500, bottled, 99
+Tiki Monkey, 450, bottled, 99
+Fugo Vodka, 450, bottled, 99
+Old Grove Gin, 450, bottled, 99
+Tiki Monkey, 375, bottled, 98
+Three SheetsRum, 180, bottled, 99
+Vodka Mule, 5500, canned, 98
+Gin and Tonic, 7600, canned, 99
