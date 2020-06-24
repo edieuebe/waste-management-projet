@@ -44,6 +44,8 @@ def printDailyTable(drinks):
 
     print('-------------------------------------------------------------------------------------------------------------')
     print(f'Daily Totals       {getTotalDayCases(drinks):<15} {getTotalDayWaste(drinks):<40} {getTotalDayVolumetric(drinks)}')
+    print('-------------------------------------------------------------------------------------------------------------')
+    print('')
 
 def printSingleDrink(drink):
     print('')
