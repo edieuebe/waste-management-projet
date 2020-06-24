@@ -42,8 +42,10 @@ def printDailyTable(drinks, days):
     for drink in drinks.values():
         print('-------------------------------------------------------------------------------------------------------------')
         print(f'{drink.name:<17}  {drink.cases*days:<15} {drink.totalDrinkWaste*days:<40} {drink.totalSolidWaste*days}')
-
-    totalStr = f'Total for {days} days'
+    if days > 1:
+        totalStr = f'Total for {days} days'
+    else:
+        totalStr = 'Total'
     print('-------------------------------------------------------------------------------------------------------------')
     print(f'{totalStr:<18} {getTotalDayCases(drinks)*days:<15} {getTotalDayWaste(drinks)*days:<40} {getTotalDayVolumetric(drinks)*days}')
     print('-------------------------------------------------------------------------------------------------------------')
@@ -91,12 +93,6 @@ def main():
         printDailyTable(drinks, days)
     else:
         printSingleDrink(drinks.get(specificDrink), days)
-    #total =0
-    #for i in range(len(drinks)):
-        #total += drink.totalDrinkWaste[i]+(0.15*3.126)
-        #i+=1
-        #return total
-        #print('The total amount of volumetric waste for this time prediod is: ', total)
 
 if __name__ == '__main__':
     main()
