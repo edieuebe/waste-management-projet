@@ -9,8 +9,9 @@ from Cans import Can
 def usage(exit_code = 0):
     progname = os.path.basename(sys.argv[0])
     print(f'''Usage: {progname} [-s DRINKNAME -i PATH]
-    -d "DRINK NAME" Singular drink data, pass the name as "DRINK NAME", dont forget quotes
-    -i PATH      Specify path to data file (default drink-setup.txt)''')
+    -n "DRINK NAME" Singular drink data, pass the name as "DRINK NAME", dont forget quotes
+    -i PATH         Specify path to data file (default drink-setup.txt)
+    -d DAYS         Specify number of days to do calculations for (default 1)''')
     sys.exit(exit_code)
 
 def getTotalDayWaste(drinks):
@@ -34,20 +35,21 @@ def getTotalDayVolumetric(drinks):
 
     return totalVolumetric
 
-def printDailyTable(drinks):
+def printDailyTable(drinks, days):
     print('')
     print(f'Drink Name        Cases    Liquid volumetric waste (m^3)  Total volumetric waste w/ 15% excluded volume (m^3)')
     
     for drink in drinks.values():
         print('-------------------------------------------------------------------------------------------------------------')
-        print(f'{drink.name:<17}  {drink.cases:<15} {drink.totalDrinkWaste:<40} {drink.totalSolidWaste}')
+        print(f'{drink.name:<17}  {drink.cases*days:<15} {drink.totalDrinkWaste*days:<40} {drink.totalSolidWaste*days}')
 
+    totalStr = f'Total for {days} days'
     print('-------------------------------------------------------------------------------------------------------------')
-    print(f'Daily Totals       {getTotalDayCases(drinks):<15} {getTotalDayWaste(drinks):<40} {getTotalDayVolumetric(drinks)}')
+    print(f'{totalStr:<18} {getTotalDayCases(drinks)*days:<15} {getTotalDayWaste(drinks)*days:<40} {getTotalDayVolumetric(drinks)*days}')
     print('-------------------------------------------------------------------------------------------------------------')
     print('')
 
-def printSingleDrink(drink):
+def printSingleDrink(drink, days):
     print('')
     print(f'{drink.name:>4} : {drink.cases} cases = {drink.totalDrinkWaste} m^3 of liquid volumetric waste')
     print(f'{drink.name:>4} : {drink.cases} cases = {drink.totalDrinkWaste+(0.15*3.126)} m^3 of total volumetric waste assuming 15% excluded volume')
@@ -60,15 +62,18 @@ def main():
     single = False
     path = 'drink-setup.txt'
     specificDrink = 'None'
+    days = 1
 
     # Loop through arguments to parse
     while len(arguments) and arguments[0].startswith('-'):
         arg = arguments.pop(0)
         if arg == '-i':
             path = arguments.pop(0)
-        elif arg == '-d':
+        elif arg == '-n':
             single = True
             specificDrink = arguments.pop(0)
+        elif arg == '-d':
+            days = int(arguments.pop(0))
         elif arg == '-h':
             usage()
         else:
@@ -83,9 +88,9 @@ def main():
     drinks = {line[0]:Drink(line[0], int(line[1]), line[2], int(line[3])) for line in csv_reader}
 
     if single == False:
-        printDailyTable(drinks)
+        printDailyTable(drinks, days)
     else:
-        printSingleDrink(drinks.get(specificDrink))
+        printSingleDrink(drinks.get(specificDrink), days)
     #total =0
     #for i in range(len(drinks)):
         #total += drink.totalDrinkWaste[i]+(0.15*3.126)
