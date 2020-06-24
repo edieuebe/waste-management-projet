@@ -4,6 +4,7 @@ from Drink import Drink
 import csv
 import os
 import sys
+from Cans import Can
 
 def usage(exit_code = 0):
     progname = os.path.basename(sys.argv[0])
@@ -37,12 +38,23 @@ def main():
     # Open and get csv object from file
     csv_reader = csv.reader(open(path, 'r'))
 
-    # Dictionary comprehension of form {key:value for [name, cases, bottled] in csvfile}
+    # Dictionary comprehension of form {key:value for [name, cases, bottled, efficiency] in csvfile}
     # Creates drink objects for each line in csv file
-    drinks = {line[0]:Drink(line[0], int(line[1]), line[2]) for line in csv_reader}
+
+    drinks = {line[0]:Drink(line[0], int(line[1]), line[2], int(line[3])) for line in csv_reader}
 
     for drink in drinks.values():
-        print(f'{drink.name:>4} : {drink.cases} = {drink.totalDrinkWaste}')
+        print('')
+        print(f'{drink.name:>4} : {drink.cases} cases = {drink.totalDrinkWaste} m^3 of liquid volumetric waste')
+        print(f'{drink.name:>4} : {drink.cases} cases = {drink.totalDrinkWaste+(0.15*3.126)} m^3 of total volumetric waste assuming 15% excluded volume')
+        print('')
+
+    #total =0
+    #for i in range(len(drinks)):
+        #total += drink.totalDrinkWaste[i]+(0.15*3.126)
+        #i+=1
+        #return total
+        #print('The total amount of volumetric waste for this time prediod is: ', total)
 
 if __name__ == '__main__':
     main()
