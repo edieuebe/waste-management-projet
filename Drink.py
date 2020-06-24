@@ -13,6 +13,7 @@ class Drink():
             self.packaging_waste = Can(cases, efficiency)
 
         self.totalDrinkWaste = self.drinkWaste()
+        self.totalSolidWaste = self.totalDrinkWaste+(0.15*3.126)
 
     def drinkWaste(self):
         packagingWaste  = self.packaging_waste.totalWaste
