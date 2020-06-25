@@ -5,13 +5,16 @@ import csv
 import os
 import sys
 from Cans import Can
+import tkinter as tk
+from tkinter import *
 
 def usage(exit_code = 0):
     progname = os.path.basename(sys.argv[0])
     print(f'''Usage: {progname} [-s DRINKNAME -i PATH]
     -n "DRINK NAME" Singular drink data, pass the name as "DRINK NAME", dont forget quotes
     -i PATH         Specify path to data file (default drink-setup.txt)
-    -d DAYS         Specify number of days to do calculations for (default 1)''')
+    -d DAYS         Specify number of days to do calculations for (default 1)
+    -g              Run Program with GUI''')
     sys.exit(exit_code)
 
 def getTotalDayWaste(drinks):
@@ -41,6 +44,22 @@ def getTotalTonnage(drinks):
         totalTonnage += drink.totalTonnage
 
     return totalTonnage
+
+def runWithGUI(drinks):
+
+    root = Tk()
+    root.title("Drink and Waste Production")
+
+    canvas = tk.Canvas(root, height=700, width=1000, bg="#21bf4b")
+    canvas.pack()
+
+    addDrinkFrame = tk.Frame(root, bg="#4e9686")
+    addDrinkFrame.place(relwidth=0.35, relheight = 0.9, relx=0.05, rely=0.05)
+
+    drinkFrameLabel = tk.Label(addDrinkFrame, text="Add Drink", bg="#4e9686", fg="white")
+    drinkFrameLabel.pack()
+
+    root.mainloop()
 
 
 def printDailyTable(drinks, days):
@@ -73,6 +92,7 @@ def main():
     path = 'drink-setup.txt'
     specificDrink = 'None'
     days = 1
+    withGUI = False
 
     # Loop through arguments to parse
     while len(arguments) and arguments[0].startswith('-'):
@@ -84,6 +104,8 @@ def main():
             specificDrink = arguments.pop(0)
         elif arg == '-d':
             days = int(arguments.pop(0))
+        elif arg == '-g':
+            withGUI = True
         elif arg == '-h':
             usage()
         else:
@@ -97,10 +119,13 @@ def main():
 
     drinks = {line[0]:Drink(line[0], int(line[1]), line[2], int(line[3])) for line in csv_reader}
 
-    if single == False:
-        printDailyTable(drinks, days)
+    if withGUI:
+        runWithGUI(drinks)
     else:
-        printSingleDrink(drinks.get(specificDrink), days)
+        if single == False:
+            printDailyTable(drinks, days)
+        else:
+            printSingleDrink(drinks.get(specificDrink), days)
 
 if __name__ == '__main__':
     main()
