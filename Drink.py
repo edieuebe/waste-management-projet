@@ -7,13 +7,14 @@ class Drink():
         self.cases = cases
         self.efficiency = efficiency #this is defined as decimal value in other functions
 
-        if (name=='Tiki Monkey' or name=='Devils Share Whiskey' or name=='Cutwater Whiskey' or name=='Fugo Vodka' or name=='Tequila' or name=='Old Grove Gin' or name=='Three Sheets Rum' or name=='Opah'):
+        if (name=='Tiki Monkey' or name=='Devils Share Whiskey' or name=='Cutwater Whiskey' or name=='Fugo Vodka' or name=='Tequila' or name=='Old Grove Gin' or name=='Three Sheets Rum' or name=='Opah'or name=='Black Skimmer Whiskey' or name=='Bloody' or name=='Bali Hai Tiki Gold'):
             self.packaging_waste = Bottles(cases, efficiency)
         else:
             self.packaging_waste = Can(cases, efficiency)
 
         self.totalDrinkWaste = self.drinkWaste()
-        self.totalSolidWaste = self.totalDrinkWaste+(0.15*3.126)
+        self.totalSolidWaste = self.totalDrinkWaste+(0.10*3.126)
+        self.totalTonnage = self.totalDrinkWaste*(1.09351**3)*106*0.0005 #weight of waste in tons for corrogated cardboard
 
     def drinkWaste(self):
         packagingWaste  = self.packaging_waste.totalWaste

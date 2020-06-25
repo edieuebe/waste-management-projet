@@ -35,20 +35,28 @@ def getTotalDayVolumetric(drinks):
 
     return totalVolumetric
 
+def getTotalTonnage(drinks):
+    totalTonnage = 0
+    for drink in drinks.values():
+        totalTonnage += drink.totalTonnage
+
+    return totalTonnage
+
+
 def printDailyTable(drinks, days):
     print('')
-    print(f'Drink Name        Cases    Liquid volumetric waste (m^3)  Total volumetric waste w/ 15% excluded volume (m^3)')
+    print(f'Drink Name            Cases         Liquid volumetric waste (m^3)      Total volumetric waste w/ 10% excluded volume (m^3)    Total Weight(Tons) ')
     
     for drink in drinks.values():
-        print('-------------------------------------------------------------------------------------------------------------')
-        print(f'{drink.name:<17}  {drink.cases*days:<15} {drink.totalDrinkWaste*days:<40} {drink.totalSolidWaste*days}')
+        print('-------------------------------------------------------------------------------------------------------------------------------------------------')
+        print(f'{drink.name:<20}  {drink.cases*days:<18} {drink.totalDrinkWaste*days:<45} {drink.totalSolidWaste*days:<38} {drink.totalTonnage}')
     if days > 1:
         totalStr = f'Total for {days} days'
     else:
         totalStr = 'Total'
-    print('-------------------------------------------------------------------------------------------------------------')
-    print(f'{totalStr:<18} {getTotalDayCases(drinks)*days:<15} {getTotalDayWaste(drinks)*days:<40} {getTotalDayVolumetric(drinks)*days}')
-    print('-------------------------------------------------------------------------------------------------------------')
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------')
+    print(f'{totalStr:<20} {getTotalDayCases(drinks)*days:<18} {getTotalDayWaste(drinks)*days:<45} {getTotalDayVolumetric(drinks)*days:<38} {getTotalTonnage(drinks)*days}')
+    print('-------------------------------------------------------------------------------------------------------------------------------------------------')
     print('')
 
 def printSingleDrink(drink, days):
