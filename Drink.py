@@ -8,7 +8,7 @@ class Drink():
         self.efficiency = efficiency #this is defined as decimal value in other functions
         self.bottled = bottled
 
-        if (name=='Tiki Monkey' or name=='Devils Share Whiskey' or name=='Cutwater Whiskey' or name=='Fugo Vodka' or name=='Tequila' or name=='Old Grove Gin' or name=='Three Sheets Rum' or name=='Opah'or name=='Black Skimmer Whiskey' or name=='Bloody' or name=='Bali Hai Tiki Gold'):
+        if (self.bottled):
             self.packaging_waste = Bottles(cases, efficiency)
         else:
             self.packaging_waste = Can(cases, efficiency)
@@ -19,7 +19,7 @@ class Drink():
 
     def updateCaseData(self, cases):
         self.cases = cases
-        if (self.name=='Tiki Monkey' or self.name=='Devils Share Whiskey' or self.name=='Cutwater Whiskey' or self.name=='Fugo Vodka' or self.name=='Tequila' or self.name=='Old Grove Gin' or self.name=='Three Sheets Rum' or self.name=='Opah'or self.name=='Black Skimmer Whiskey' or self.name=='Bloody' or self.name=='Bali Hai Tiki Gold'):
+        if (self.bottled):
             self.packaging_waste = Bottles(self.cases, self.efficiency)
         else:
             self.packaging_waste = Can(self.cases, self.efficiency)
