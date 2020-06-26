@@ -79,19 +79,16 @@ def updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput):
     createDataFrame(root, drinks)
 
 def createDrinkFrame(root, drinks):
-<<<<<<< HEAD
     addDrinkFrame = tk.Frame(root, bg="steelblue")
     addDrinkFrame.place(relwidth=0.3, relheight=0.4, relx=0.01, rely=0.02)
 
     drinkFrameLabel = tk.Label(addDrinkFrame, text="Update Cases", bg="steelblue", fg="black")
     drinkFrameLabel.grid(row=0, column=0, columnspan=2, pady=40, padx=10)
-=======
     addDrinkFrame = tk.Frame(root, bg="#4e9686")
     addDrinkFrame.place(relwidth=0.3, relheight=0.5, relx=0.01, rely=0.02)
 
     drinkFrameLabel = tk.Label(addDrinkFrame, text="Update Cases", bg="#4e9686", fg="black")
     drinkFrameLabel.grid(row=0, column=0, columnspan=2, pady=10, padx=10)
->>>>>>> 982ae3845a2da328b0d674e3fce914ad30536f1f
 
     drinkNameEntryLabel = tk.Label(addDrinkFrame, text="Drink Name", bg="steelblue", fg="white")
     drinkNameEntryLabel.grid(row=1, column=0, pady=10, padx=10)
@@ -108,7 +105,18 @@ def createDrinkFrame(root, drinks):
     changeDrinkButton = tk.Button(addDrinkFrame, width=10, text="Update", highlightbackground="lightsteelblue", bd=0, fg="white", command=lambda: updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput))
     changeDrinkButton.grid(row=3, column=0, columnspan=2, pady=10)
 
-<<<<<<< HEAD
+    newFileLabel = tk.Label(addDrinkFrame, text="New Save File", bg="#4e9686", fg="white")
+    newFileLabel.grid(row=4, column=0, pady=10)
+
+    newFileInput = tk.Entry(addDrinkFrame, width=15, bg="white")
+    newFileInput.grid(row=4, column=1, pady=10)
+
+    fileSaveInfo = tk.Label(addDrinkFrame, text="Leave blank to save to default setup file", bg="#4e9686", fg="white")
+    fileSaveInfo.grid(row=5, column=0, columnspan=2, pady=10)
+
+    saveFileButton = tk.Button(addDrinkFrame, text="Save", width=10, highlightbackground="black", bd=0, fg="white", command=lambda: saveNewCSV(drinks, newFileInput, addDrinkFrame))
+    saveFileButton.grid(row=6, column=0, columnspan=2, pady=10)
+
 def createAnalysisFrame(root, drinks):
 
     addAnalysisFrame = tk.Frame(root, bg="steelblue")
@@ -138,19 +146,6 @@ def createAnalysisFrame(root, drinks):
     CompPercentVol= tk.Label(addAnalysisFrame, text=str(round(CompactorAnalysis(drinks),3)), bg="steelblue", fg="blue4", font=80)
     CompPercentVol.grid(row=8, column=0, padx=1, pady=1)
 
-=======
-    newFileLabel = tk.Label(addDrinkFrame, text="New Save File", bg="#4e9686", fg="white")
-    newFileLabel.grid(row=4, column=0, pady=10)
-
-    newFileInput = tk.Entry(addDrinkFrame, width=15, bg="white")
-    newFileInput.grid(row=4, column=1, pady=10)
-
-    fileSaveInfo = tk.Label(addDrinkFrame, text="Leave blank to save to default setup file", bg="#4e9686", fg="white")
-    fileSaveInfo.grid(row=5, column=0, columnspan=2, pady=10)
-
-    saveFileButton = tk.Button(addDrinkFrame, text="Save", width=10, highlightbackground="black", bd=0, fg="white", command=lambda: saveNewCSV(drinks, newFileInput, addDrinkFrame))
-    saveFileButton.grid(row=6, column=0, columnspan=2, pady=10)
-
 def saveNewCSV(drinks, newFileInput, addDrinkFrame):
     
     if newFileInput.get() == "":
@@ -162,13 +157,11 @@ def saveNewCSV(drinks, newFileInput, addDrinkFrame):
         csv_writer = csv.writer(new_file)
 
         for drink in drinks.values():
-            print(drink.bottled)
             line = [drink.name, str(drink.cases), "bottled" if drink.bottled else "canned", str(drink.efficiency)]
             csv_writer.writerow(line)
 
     savedConfirmation = tk.Label(addDrinkFrame, text="File Saved Successfully! :)", bg="#4e9686", fg="white")
     savedConfirmation.grid(row=7, column=0, columnspan=2, pady=10)
->>>>>>> 982ae3845a2da328b0d674e3fce914ad30536f1f
 
 def createDataFrame(root, drinks):
     colwidth = 11
