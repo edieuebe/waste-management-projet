@@ -45,6 +45,77 @@ def getTotalTonnage(drinks):
 
     return totalTonnage
 
+def updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput):
+    drinkName = drinkNameInput.get()
+    cases = int(drinkCaseInput.get())
+
+    try:
+        drinks.get(drinkName).cases = cases
+    except:
+        print("Unable to find drink")
+
+    createDrinkFrame(root, drinks)
+    createDataFrame(root, drinks)
+
+def createDrinkFrame(root, drinks):
+    addDrinkFrame = tk.Frame(root, bg="#4e9686")
+    addDrinkFrame.place(relwidth=0.3, relheight=0.4, relx=0.01, rely=0.02)
+
+    drinkFrameLabel = tk.Label(addDrinkFrame, text="Update Cases", bg="#4e9686", fg="black")
+    drinkFrameLabel.grid(row=0, column=0, columnspan=2, pady=40, padx=10)
+
+    drinkNameEntryLabel = tk.Label(addDrinkFrame, text="Drink Name", bg="#4e9686", fg="white")
+    drinkNameEntryLabel.grid(row=1, column=0, pady=10, padx=10)
+
+    drinkNameInput = tk.Entry(addDrinkFrame, width=15, bg="white")
+    drinkNameInput.grid(row=1, column=1, padx=10)
+
+    drinkCaseEntryLabel = tk.Label(addDrinkFrame, text="Cases", bg="#4e9686", fg="white")
+    drinkCaseEntryLabel.grid(row=2, column=0, pady=10, padx=10)
+
+    drinkCaseInput = tk.Entry(addDrinkFrame, width=15, bg="white")
+    drinkCaseInput.grid(row=2, column=1, padx=10)
+
+    changeDrinkButton = tk.Button(addDrinkFrame, width=10, text="Update", highlightbackground="black", bd=0, fg="white", command=lambda: updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput))
+    changeDrinkButton.grid(row=3, column=0, columnspan=2, pady=10)
+
+def createDataFrame(root, drinks):
+    colwidth = 11
+
+    addDataFrame = tk.Frame(root, bg="#4e9686")
+    addDataFrame.place(relwidth=0.67, relheight=0.96, relx=0.32, rely=0.02)
+
+    nameDataLabel = tk.Label(addDataFrame, text="Drink Name", bg="#4e9686", fg="black", anchor="w", width=15)
+    nameDataLabel.grid(row=0, column=0, padx=10, pady=10)
+
+    caseDataLabel = tk.Label(addDataFrame, text="Cases", bg="#4e9686", fg="black", anchor="w", width=colwidth)
+    caseDataLabel.grid(row=0, column=1, padx=10, pady=10)
+
+    volumetricDataLabel = tk.Label(addDataFrame, text="Liquid Volumetric\nWaste (m^3)", bg="#4e9686", fg="black", anchor="w", width=colwidth)
+    volumetricDataLabel.grid(row=0, column=2, padx=10, pady=10)
+
+    totalDataLabel = tk.Label(addDataFrame, text=" Solid Volumetric\nWaste (m^3)", bg="#4e9686", fg="black", anchor="w", width=colwidth)
+    totalDataLabel.grid(row=0, column=3, padx=10, pady=10)
+
+    solidDataLabel = tk.Label(addDataFrame, text="Total \nWeight (Tons)", bg="#4e9686", fg="black", anchor="w", width=colwidth)
+    solidDataLabel.grid(row=0, column=4, padx=10, pady=10)
+
+    for i, drink in enumerate(drinks.values(), start=1):
+        drinkNameDataLabel = tk.Label(addDataFrame, text=drink.name, bg="#4e9686", fg="white", anchor="w", width=15)
+        drinkNameDataLabel.grid(row=i, column=0, padx=10, pady=5)
+
+        drinkCasesDataLabel = tk.Label(addDataFrame, text=str(drink.cases), bg="#4e9686", fg="white", anchor="w", width=colwidth)
+        drinkCasesDataLabel.grid(row=i, column=1, padx=10, pady=5)
+
+        drinkLiquidVolumetricLabel = tk.Label(addDataFrame, text=str(round(drink.totalDrinkWaste, 3)), bg="#4e9686", fg="white", width=colwidth)
+        drinkLiquidVolumetricLabel.grid(row=i, column=2, padx=10, pady=5)
+
+        drinkTotalVolumetricLabel = tk.Label(addDataFrame, text=str(round(drink.totalSolidWaste, 3)), bg="#4e9686", fg="white", width=colwidth)
+        drinkTotalVolumetricLabel.grid(row=i, column=3, padx=10, pady=5)
+
+        drinkTotalSolidLabel = tk.Label(addDataFrame, text=str(round(drink.totalTonnage, 3)), bg="#4e9686", fg="white", width=colwidth)
+        drinkTotalSolidLabel.grid(row=i, column=4, padx=10, pady=5)
+
 def runWithGUI(drinks):
 
     bottled = False
@@ -55,37 +126,8 @@ def runWithGUI(drinks):
     canvas = tk.Canvas(root, height=700, width=1000, bg="#21bf4b")
     canvas.pack()
 
-    addDrinkFrame = tk.Frame(root, bg="#4e9686")
-    addDrinkFrame.place(relwidth=0.35, relheight=0.5, relx=0.05, rely=0.05)
-
-    addDataFrame = tk.Frame(root, bg="#4e9686")
-    addDataFrame.place(relwidth=0.5, relheight=0.9, relx=0.45, rely=0.05)
-
-    drinkFrameLabel = tk.Label(addDrinkFrame, text="Add Drink", bg="#4e9686", fg="white")
-    drinkFrameLabel.grid(row=0, column=0, columnspan=2, pady=10, padx=10)
-
-    drinkNameEntryLabel = tk.Label(addDrinkFrame, text="Drink Name", bg="#4e9686", fg="white")
-    drinkNameEntryLabel.grid(row=1, column=0, pady=10, padx=10)
-
-    drinkNameInput = tk.Entry(addDrinkFrame, width=20, bg="white")
-    drinkNameInput.grid(row=1, column=1, padx=10)
-
-    drinkCaseEntryLabel = tk.Label(addDrinkFrame, text="Cases", bg="#4e9686", fg="white")
-    drinkCaseEntryLabel.grid(row=2, column=0, pady=10, padx=10)
-
-    drinkCaseInput = tk.Entry(addDrinkFrame, width=20, bg="white")
-    drinkCaseInput.grid(row=2, column=1, padx=10)
-
-    bottledRadio = tk.Radiobutton(addDrinkFrame, text="Bottled", variable=bottled, value=TRUE, bg="#4e9686")
-    cannedRadio = tk.Radiobutton(addDrinkFrame, text="Canned", variable=bottled, value=FALSE, bg="#4e9686" )
-
-    bottledRadio.grid(row=3, column=0, padx=10, pady=10)
-    cannedRadio.grid(row=3, column=1, padx=10, pady=10)
-
-    addDrinkButton = tk.Button(addDrinkFrame, text="Add")
-    addDrinkButton.grid(row=4, column=0, columnspan=2, pady=10)
-
-
+    createDrinkFrame(root, drinks)
+    createDataFrame(root, drinks)
 
     root.mainloop()
 
