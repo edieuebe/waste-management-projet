@@ -1,18 +1,17 @@
-VS Lime, 9600, canned, 98
-Margarita, 38000, canned, 99
-Elderflower Spritz, 2800, canned, 99
-Vodka Mule, 30500, canned, 99
-VS Cucumber, 2300, canned, 99
+Bloody RTE Spicy, 4350, canned, 95
+VS Grapefruit, 8900, canned, 99
+VS Lime, 9600, canned, 99
+Vodka Mule, 29500, canned, 99
+Mai Tai, 5000, canned, 99
+Tiki Monkey, 400, bottled, 99
+Old Grove Gin, 340, bottled, 99
+Fugo Vodka, 1450, bottled, 99
+Bali Hai Tiki Gold Rum, 475, bottled, 99
+Three Sheets Rum, 340, bottled, 99
 Paloma, 7600, canned, 99
-Mai Tai, 5000, canned, 98
-Three Sheets Rum, 630, bottled, 99
-Bali Hai Tiki Gold, 450, bottled,99
-Fugo Vodka, 450, bottled, 99
-Old Grove Gin, 450, bottled, 99
-Tiki Monkey, 375, bottled, 96
-Gin and Tonic, 7600, canned, 99
-Bloody RTE, 4350, canned, 98
-VS Grapefruit, 7600, canned, 99
-Bloody RTE, 4350, canned, 97
-Mojito, 4500, canned, 98
-Bloody RTE, 3900, canned, 99
+Margarita, 36000, canned, 99
+VS Cucumber, 2300, canned, 99
+Elderflower Spritz, 2800, canned, 99
+Tequila Soda, 5700, canned, 99
+Gin Tonic, 3600, canned, 99
+Mint Mojito, 4500, canned, 99
