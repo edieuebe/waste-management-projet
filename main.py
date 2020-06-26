@@ -50,10 +50,12 @@ def updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput):
     cases = int(drinkCaseInput.get())
 
     try:
-        drinks.get(drinkName).cases = cases
+        drink = drinks.get(drinkName)
     except:
         print("Unable to find drink")
 
+    drink.updateCaseData(cases)
+    
     createDrinkFrame(root, drinks)
     createDataFrame(root, drinks)
 
