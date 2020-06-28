@@ -64,7 +64,7 @@ def CompactorAnalysis(drinks):
 
     return compactor_percent
 
-def updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput):
+def updateDataFrame(root, drinks, analysisFrame, drinkNameInput, drinkCaseInput):
     drinkName = drinkNameInput.get()
     cases = int(drinkCaseInput.get())
 
@@ -97,7 +97,7 @@ def createDrinkFrame(root, drinks, analysisFrame):
     drinkCaseInput = tk.Entry(addDrinkFrame, width=15, bg="white")
     drinkCaseInput.grid(row=2, column=1, padx=10)
 
-    changeDrinkButton = tk.Button(addDrinkFrame, width=10, text="Update", highlightbackground="lightsteelblue", bd=0, fg="black", command=lambda: updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput))
+    changeDrinkButton = tk.Button(addDrinkFrame, width=10, text="Update", highlightbackground="lightsteelblue", bd=0, fg="black", command=lambda: updateDataFrame(root, drinks, analysisFrame, drinkNameInput, drinkCaseInput))
     changeDrinkButton.grid(row=3, column=0, columnspan=2, pady=10)
 
     newFileLabel = tk.Label(addDrinkFrame, text="New Save File", bg="steelblue", fg="white")
