@@ -184,7 +184,7 @@ def createDataFrame(root, drinks):
     solidDataLabel = tk.Label(addDataFrame, text="Total \nWeight (Tons)", bg="steelblue", fg="black", anchor="w", width=colwidth)
     solidDataLabel.grid(row=0, column=4, padx=10, pady=10)
 
-    DrinkTotalDataTable = tk.Label(addDataFrame, text="Total: ", bg="steelblue", fg="blue4", anchor="w")
+    DrinkTotalDataTable = tk.Label(addDataFrame, text="Total: ", bg="steelblue", fg="blue4", anchor="w", width=colwidth)
     DrinkTotalDataTable.grid(row=(getTotalDrinkNames(drinks)), column=0, padx=0, pady=0)
 
 
