@@ -74,7 +74,7 @@ def updateDataFrame(root, drinks, drinkNameInput, drinkCaseInput):
     except:
         print("Unable to find drink")
 
-    createDrinkFrame(root, drinks)
+    createDrinkFrame(root, drinks, analysisFrame)
     createDataFrame(root, drinks)
     createAnalysisFrame(root, drinks)
 
