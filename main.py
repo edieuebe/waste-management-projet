@@ -10,7 +10,7 @@ from tkinter import *
 
 def usage(exit_code = 0):
     progname = os.path.basename(sys.argv[0])
-    print(f'''Usage: {progname} [-s DRINKNAME -i PATH]
+    print(f'''Usage: {progname} [-n DRINKNAME -i PATH]
     -n "DRINK NAME" Singular drink data, pass the name as "DRINK NAME", dont forget quotes
     -i PATH         Specify path to data file (default drink-setup.txt)
     -d DAYS         Specify number of days to do calculations for (default 1)
