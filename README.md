@@ -13,3 +13,8 @@ Usage: ./main.py [-n DRINKNAME -i PATH]
 
 Here is what the user sees when `./main.py -g` is run.
 ![Gui Picture](/images/GuiPic.png)
+
+Here is an example of the GUI dynamically updating with a change to one of the drink counts
+
+![GUI Updated Picture](/images/GuiUpdate.png)
+
